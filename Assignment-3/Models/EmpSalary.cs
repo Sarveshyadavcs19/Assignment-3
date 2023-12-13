@@ -20,6 +20,5 @@ namespace Assignment_3.Models
         [ForeignKey(nameof(Employee))]
         public int EmpId { get; set; }
         public virtual Employee Employee { get; set; }
-        public int Id { get; internal set; }
     }
 }

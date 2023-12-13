@@ -1,14 +1,15 @@
 ﻿using Assignment_3.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 public class EmployeesController : Controller
 {
     private readonly IEmployeeRepository _employeeRepository;
+    private readonly IEmpSalaryRepository _empSalaryRepository;
 
-    public EmployeesController(IEmployeeRepository employeeRepository)
+    public EmployeesController(IEmployeeRepository employeeRepository, IEmpSalaryRepository empSalaryRepository)
     {
         _employeeRepository = employeeRepository;
+        _empSalaryRepository = empSalaryRepository;
     }
 
     public IActionResult Index()
@@ -26,7 +27,7 @@ public class EmployeesController : Controller
     [ValidateAntiForgeryToken]
     public IActionResult Create(Employee employee)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             _employeeRepository.Add(employee);
             return RedirectToAction(nameof(Index));
@@ -55,7 +56,7 @@ public class EmployeesController : Controller
             return NotFound();
         }
 
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
             _employeeRepository.Update(employee);
             return RedirectToAction(nameof(Index));
@@ -95,4 +96,28 @@ public class EmployeesController : Controller
         _employeeRepository.Delete(id);
         return RedirectToAction(nameof(Index));
     }
+
+    public IActionResult Reports()
+    {
+        var averageSalary = _empSalaryRepository.GetAll().Average(e => e.Salary);
+
+        var employeesGroupedByCity = _employeeRepository
+            .GetAll()
+            .GroupBy(e => e.City)
+            .Select(g => new CityGroup { City = g.Key, EmployeeCount = g.Count() })
+            .ToList();
+
+        var lowestSalariesInRecentMonth = _empSalaryRepository
+            .GetSalariesForRecentMonth()
+            .OrderBy(s => s.Salary)
+            .Take(5)
+            .ToList();
+
+        ViewData["AverageSalary"] = averageSalary;
+        ViewData["EmployeesGroupedByCity"] = employeesGroupedByCity;
+        ViewData["LowestSalariesInRecentMonth"] = lowestSalariesInRecentMonth;
+
+        return View();
+    }
+
 }

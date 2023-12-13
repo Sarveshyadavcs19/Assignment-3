@@ -7,8 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
-//builder.Services.AddTransient<IRepository<Employee>, Repository<Employee>>();
-//builder.Services.AddTransient<IRepository<EmpSalary>, Repository<EmpSalary>>();
+
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<IEmpSalaryRepository, EmpSalaryRepository>();
 

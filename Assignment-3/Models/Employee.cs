@@ -18,6 +18,6 @@ namespace Assignment_3.Models
         public string City { get; set; }
 
         public virtual ICollection<EmpSalary> Salaries { get; set; }
-        public int Id { get; internal set; }
+       
     }
 }

@@ -3,46 +3,79 @@
 @{
     ViewData["Title"] = "Create";
 }
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        color: #343a40;
+    }
 
-<h1>Create</h1>
+    h1, h2 {
+        text-align: center;
+        color: #007bff;
+        font-weight: bold;
+    }
 
-<h4>Employee</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="EmpId" class="control-label"></label>
-                <input asp-for="EmpId" class="form-control" />
-                <span asp-validation-for="EmpId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmpName" class="control-label"></label>
-                <input asp-for="EmpName" class="form-control" />
-                <span asp-validation-for="EmpName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="JoiningDate" class="control-label"></label>
-                <input asp-for="JoiningDate" class="form-control" />
-                <span asp-validation-for="JoiningDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+    .create-container {
+        max-width: 400px;
+        margin: auto;
+        margin-top: 50px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .btn-create {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-back {
+        color: #007bff;
+    }
+
+        .btn-back:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<br />
+
+<div class="create-container">
+    <h2>Add Employee</h2>
+    <hr />
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="EmpName" class="control-label">Employee Name</label>
+            <input asp-for="EmpName" class="form-control" />
+            <span asp-validation-for="EmpName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="JoiningDate" class="control-label">Joining Date</label>
+            <input asp-for="JoiningDate" class="form-control" />
+            <span asp-validation-for="JoiningDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="City" class="control-label">City</label>
+            <input asp-for="City" class="form-control" />
+            <span asp-validation-for="City" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary btn-create float-end rounded-pill link-light" />
+            <button class="btn btn-warning rounded-pill link-light"> <a class="link-light" asp-action="Index"><i class="bi bi-arrow-left-short"></i> Back To List </a> </button>
+        </div>
+    </form>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

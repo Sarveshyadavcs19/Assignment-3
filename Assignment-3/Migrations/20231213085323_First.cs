@@ -19,8 +19,7 @@ namespace Assignment_3.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmpName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     JoiningDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -36,8 +35,7 @@ namespace Assignment_3.Migrations
                     Month = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Salary = table.Column<float>(type: "real", nullable: false),
                     CreditDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EmpId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    EmpId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
