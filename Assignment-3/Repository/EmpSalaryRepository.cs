@@ -50,4 +50,17 @@ public class EmpSalaryRepository : IEmpSalaryRepository
             _context.SaveChanges();
         }
     }
+
+    public IEnumerable<EmpSalary> GetSalariesForRecentMonth()
+    {
+        var currentDate = DateTime.Now;
+        return _context.EmpSalaries
+            .Where(s => s.CreditDate.Month == currentDate.Month && s.CreditDate.Year == currentDate.Year)
+            .ToList();
+    }
+
+    public IEnumerable<EmpSalary> GetSalariesForEmployee(int empId)
+    {
+        return _context.EmpSalaries.Where(s => s.EmpId == empId).ToList();
+    }
 }

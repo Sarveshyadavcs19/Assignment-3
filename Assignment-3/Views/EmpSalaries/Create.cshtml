@@ -3,51 +3,88 @@
 @{
     ViewData["Title"] = "Create";
 }
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        color: #343a40;
+    }
 
-<h1>Create</h1>
+    h1, h2 {
+        text-align: center;
+        color: #007bff;
+        font-weight: bold;
+    }
 
-<h4>EmpSalary</h4>
+    .create-container {
+        max-width: 400px;
+        margin: auto;
+        margin-top: 50px;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .btn-create {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-back {
+        color: #007bff;
+    }
+
+        .btn-back:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<br />
+
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="SalaryId" class="control-label"></label>
-                <input asp-for="SalaryId" class="form-control" />
-                <span asp-validation-for="SalaryId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Month" class="control-label"></label>
-                <input asp-for="Month" class="form-control" />
-                <span asp-validation-for="Month" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Salary" class="control-label"></label>
-                <input asp-for="Salary" class="form-control" />
-                <span asp-validation-for="Salary" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreditDate" class="control-label"></label>
-                <input asp-for="CreditDate" class="form-control" />
-                <span asp-validation-for="CreditDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmpId" class="control-label"></label>
-                <input asp-for="EmpId" class="form-control" />
-                <span asp-validation-for="EmpId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+<div class="create-container">
+    <h2>Add EmpSalary</h2>
+    <hr />
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Month" class="control-label">Month</label>
+            <input asp-for="Month" class="form-control" />
+            <span asp-validation-for="Month" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Salary" class="control-label">Salary</label>
+            <input asp-for="Salary" class="form-control" />
+            <span asp-validation-for="Salary" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CreditDate" class="control-label">Credit Date</label>
+            <input asp-for="CreditDate" class="form-control" />
+            <span asp-validation-for="CreditDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="EmpId" class="control-label">Employee ID</label>
+            <input asp-for="EmpId" class="form-control" />
+            <span asp-validation-for="EmpId" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary btn-create float-end rounded-pill link-light" />
+            <button class="btn btn-warning rounded-pill link-light"> <a class="link-light" asp-action="Index"><i class="bi bi-arrow-left-short"></i> Back To List </a> </button>
+        </div>
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

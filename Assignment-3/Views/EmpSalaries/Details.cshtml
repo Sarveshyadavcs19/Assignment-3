@@ -3,46 +3,130 @@
 @{
     ViewData["Title"] = "Details";
 }
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+        color: #343a40;
+    }
 
-<h1>Details</h1>
+    h1 ,h4{
+        color: #007bff;
+        text-align: center;
+        font-weight: bold;
+    }
 
-<div>
-    <h4>EmpSalary</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SalaryId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SalaryId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Month)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Month)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Salary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Salary)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreditDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreditDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmpId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmpId)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    
+
+    hr {
+        border-top: 2px solid #007bff;
+    }
+
+    .card {
+        width: 50%;
+        margin: 20px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: 0.3s;
+    }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    dl.row {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    dt, dd {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    dt {
+        color: #007bff;
+    }
+
+    th {
+        background-color: #007bff;
+        color: black;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    dl.row:hover {
+        background-color: #f8f9fa;
+    }
+
+    .btn {
+        padding: 6px 12px;
+    }
+
+    .btn-warning {
+        background-color: #ffc107;
+        color: #343a40;
+        border: 1px solid #ffc107;
+    }
+
+        .btn-warning:hover {
+            background-color: #e0a800;
+            border-color: #e0a800;
+            color: #343a40;
+        }
+
+    .link-light {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .link-light:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<br />
+<h1>EmpSalary Details</h1>
+
+<div class="card">
+    <div class="card-body">
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.SalaryId)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.SalaryId)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Month)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Month)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.Salary)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.Salary)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.CreditDate)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.CreditDate)
+            </dd>
+            <dt class="col-sm-4">
+                @Html.DisplayNameFor(model => model.EmpId)
+            </dt>
+            <dd class="col-sm-8">
+                @Html.DisplayFor(model => model.EmpId)
+            </dd>
+        </dl>
+    </div>
+    <a id="btn" href="@Url.Action("Index")" class="btn btn-warning link-light rounded-pill"> <i class="bi bi-arrow-left-short"></i> Back To List</a>
 </div>

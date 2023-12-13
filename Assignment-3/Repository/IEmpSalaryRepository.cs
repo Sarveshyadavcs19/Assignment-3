@@ -11,4 +11,6 @@ public interface IEmpSalaryRepository
     void Add(EmpSalary entity);
     void Update(EmpSalary entity);
     void Delete(int id);
+    IEnumerable<EmpSalary> GetSalariesForRecentMonth();
+    IEnumerable<EmpSalary> GetSalariesForEmployee(int empId);
 }

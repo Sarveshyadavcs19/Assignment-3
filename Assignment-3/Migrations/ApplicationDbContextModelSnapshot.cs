@@ -36,9 +36,6 @@ namespace Assignment_3.Migrations
                     b.Property<int>("EmpId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("Month")
                         .HasColumnType("datetime2");
 
@@ -67,9 +64,6 @@ namespace Assignment_3.Migrations
                     b.Property<string>("EmpName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("JoiningDate")
                         .HasColumnType("datetime2");

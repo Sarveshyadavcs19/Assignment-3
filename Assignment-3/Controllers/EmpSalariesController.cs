@@ -1,7 +1,5 @@
 ﻿using Assignment_3.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 
 public class EmpSalariesController : Controller
 {
@@ -22,28 +20,22 @@ public class EmpSalariesController : Controller
 
     public IActionResult Create()
     {
-        // You might want to pass a list of employees to the view for selecting the associated employee.
-        // var employees = _employeeRepository.GetAll();
-        // ViewBag.Employees = new SelectList(employees, "EmpId", "EmpName");
-
+        ViewBag.Employees = _employeeRepository.GetAll();
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(EmpSalary salary)
+    public IActionResult Create(EmpSalary empSalary)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            _empSalaryRepository.Add(salary);
+            _empSalaryRepository.Add(empSalary);
             return RedirectToAction(nameof(Index));
         }
 
-        // You might want to pass a list of employees to the view for selecting the associated employee.
-        // var employees = _employeeRepository.GetAll();
-        // ViewBag.Employees = new SelectList(employees, "EmpId", "EmpName");
-
-        return View(salary);
+        ViewBag.Employees = _employeeRepository.GetAll();
+        return View(empSalary);
     }
 
     public IActionResult Edit(int id)
@@ -55,33 +47,27 @@ public class EmpSalariesController : Controller
             return NotFound();
         }
 
-        // You might want to pass a list of employees to the view for selecting the associated employee.
-        // var employees = _employeeRepository.GetAll();
-        // ViewBag.Employees = new SelectList(employees, "EmpId", "EmpName", salary.EmpId);
-
+        ViewBag.Employees = _employeeRepository.GetAll();
         return View(salary);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Edit(int id, EmpSalary salary)
+    public IActionResult Edit(int id, EmpSalary empSalary)
     {
-        if (id != salary.SalaryId)
+        if (id != empSalary.SalaryId)
         {
             return NotFound();
         }
 
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            _empSalaryRepository.Update(salary);
+            _empSalaryRepository.Update(empSalary);
             return RedirectToAction(nameof(Index));
         }
 
-        // You might want to pass a list of employees to the view for selecting the associated employee.
-        // var employees = _employeeRepository.GetAll();
-        // ViewBag.Employees = new SelectList(employees, "EmpId", "EmpName", salary.EmpId);
-
-        return View(salary);
+        ViewBag.Employees = _employeeRepository.GetAll();
+        return View(empSalary);
     }
 
     public IActionResult Details(int id)

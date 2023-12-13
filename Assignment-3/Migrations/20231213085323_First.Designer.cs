@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Assignment_3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231212163057_First")]
+    [Migration("20231213085323_First")]
     partial class First
     {
         /// <inheritdoc />
@@ -37,9 +37,6 @@ namespace Assignment_3.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("EmpId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("Month")
@@ -70,9 +67,6 @@ namespace Assignment_3.Migrations
                     b.Property<string>("EmpName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("JoiningDate")
                         .HasColumnType("datetime2");
